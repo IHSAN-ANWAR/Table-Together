@@ -382,6 +382,81 @@ function AboutSection() {
   )
 }
 
+// ─── GALLERY ─────────────────────────────────────────────────────────────────
+const GALLERY = [
+  {
+    src: 'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800&q=80',
+    alt: 'Friends laughing together at a dinner table',
+    caption: 'New friendships over shared plates',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
+    alt: 'Group of people enjoying a restaurant meal',
+    caption: 'Great food, greater conversations',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1543353071-087092ec393a?w=800&q=80',
+    alt: 'People gathered around a table with drinks and food',
+    caption: 'Every table tells a story',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&q=80',
+    alt: 'Cosy dining group sharing a meal at night',
+    caption: 'Strangers become community',
+  },
+]
+
+function GallerySection() {
+  return (
+    <section className="tt-section tt-section-gallery py-5">
+      <div className="container py-3">
+        <SectionHeader
+          tag="Real Moments"
+          title="People connecting at the table"
+          sub="This is what TableTogether is all about — real people, real food, real connections."
+        />
+        <div className="row g-3">
+          {/* Large featured image */}
+          <div className="col-12 col-md-6">
+            <RevealCard className="h-100">
+              <div className="tt-gallery-card tt-gallery-large">
+                <img
+                  src={GALLERY[0].src}
+                  alt={GALLERY[0].alt}
+                  className="tt-gallery-img"
+                  loading="lazy"
+                />
+                <div className="tt-gallery-caption">{GALLERY[0].caption}</div>
+              </div>
+            </RevealCard>
+          </div>
+
+          {/* Three smaller images */}
+          <div className="col-12 col-md-6">
+            <div className="row g-3 h-100">
+              {GALLERY.slice(1).map(({ src, alt, caption }, i) => (
+                <div key={i} className="col-12 col-sm-6 col-md-12 col-lg-6">
+                  <RevealCard delay={i * 80} className="h-100">
+                    <div className="tt-gallery-card">
+                      <img
+                        src={src}
+                        alt={alt}
+                        className="tt-gallery-img"
+                        loading="lazy"
+                      />
+                      <div className="tt-gallery-caption">{caption}</div>
+                    </div>
+                  </RevealCard>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ─── REVIEWS ─────────────────────────────────────────────────────────────────
 function ReviewsSection() {
   return (
@@ -672,6 +747,10 @@ export default function App() {
           <Icon id="fork-knife" size={18} className="tt-icon-dim" />
         </div>
         <AboutSection />
+        <div className="tt-divider" aria-hidden="true">
+          <Icon id="fork-knife" size={18} className="tt-icon-dim" />
+        </div>
+        <GallerySection />
         <div className="tt-divider" aria-hidden="true">
           <Icon id="plate-icon" size={18} className="tt-icon-dim" />
         </div>
