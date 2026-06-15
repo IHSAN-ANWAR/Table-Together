@@ -385,24 +385,44 @@ function AboutSection() {
 // ─── GALLERY ─────────────────────────────────────────────────────────────────
 const GALLERY = [
   {
-    src: 'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800&q=80',
-    alt: 'Friends laughing together at a dinner table',
+    src: 'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=900&q=85',
+    alt: 'Group of friends laughing and enjoying food together at a dining table',
     caption: 'New friendships over shared plates',
   },
   {
-    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
-    alt: 'Group of people enjoying a restaurant meal',
+    src: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=900&q=85',
+    alt: 'People gathered around a table eating and chatting together',
     caption: 'Great food, greater conversations',
   },
   {
-    src: 'https://images.unsplash.com/photo-1543353071-087092ec393a?w=800&q=80',
-    alt: 'People gathered around a table with drinks and food',
+    src: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=85',
+    alt: 'Happy group sharing a meal at a restaurant gathering',
     caption: 'Every table tells a story',
   },
   {
-    src: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&q=80',
-    alt: 'Cosy dining group sharing a meal at night',
+    src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=85',
+    alt: 'Warm cosy restaurant with people dining and enjoying together',
     caption: 'Strangers become community',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=85',
+    alt: 'Delicious spread of food on a table at a gathering',
+    caption: 'Food that brings people together',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=85',
+    alt: 'Lively restaurant full of people enjoying their meals',
+    caption: 'A place for everyone',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85',
+    alt: 'Beautifully plated food at a group dinner event',
+    caption: 'Curated dining experiences',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1543353071-087092ec393a?w=900&q=85',
+    alt: 'Friends clinking glasses and celebrating over dinner',
+    caption: 'Celebrate every shared moment',
   },
 ]
 
@@ -415,35 +435,24 @@ function GallerySection() {
           title="People connecting at the table"
           sub="This is what TableTogether is all about — real people, real food, real connections."
         />
-        <div className="row g-3">
-          {/* Large featured image */}
+
+        {/* Row 1 — large featured + 2 small */}
+        <div className="row g-3 mb-3">
           <div className="col-12 col-md-6">
             <RevealCard className="h-100">
               <div className="tt-gallery-card tt-gallery-large">
-                <img
-                  src={GALLERY[0].src}
-                  alt={GALLERY[0].alt}
-                  className="tt-gallery-img"
-                  loading="lazy"
-                />
+                <img src={GALLERY[0].src} alt={GALLERY[0].alt} className="tt-gallery-img" loading="lazy" />
                 <div className="tt-gallery-caption">{GALLERY[0].caption}</div>
               </div>
             </RevealCard>
           </div>
-
-          {/* Three smaller images */}
           <div className="col-12 col-md-6">
             <div className="row g-3 h-100">
-              {GALLERY.slice(1).map(({ src, alt, caption }, i) => (
-                <div key={i} className="col-12 col-sm-6 col-md-12 col-lg-6">
-                  <RevealCard delay={i * 80} className="h-100">
-                    <div className="tt-gallery-card">
-                      <img
-                        src={src}
-                        alt={alt}
-                        className="tt-gallery-img"
-                        loading="lazy"
-                      />
+              {GALLERY.slice(1, 3).map(({ src, alt, caption }, i) => (
+                <div key={i} className="col-12">
+                  <RevealCard delay={i * 80}>
+                    <div className="tt-gallery-card tt-gallery-medium">
+                      <img src={src} alt={alt} className="tt-gallery-img" loading="lazy" />
                       <div className="tt-gallery-caption">{caption}</div>
                     </div>
                   </RevealCard>
@@ -452,6 +461,21 @@ function GallerySection() {
             </div>
           </div>
         </div>
+
+        {/* Row 2 — 5 equal cards */}
+        <div className="row g-3">
+          {GALLERY.slice(3).map(({ src, alt, caption }, i) => (
+            <div key={i} className="col-12 col-sm-6 col-lg-4 col-xl">
+              <RevealCard delay={i * 60}>
+                <div className="tt-gallery-card">
+                  <img src={src} alt={alt} className="tt-gallery-img" loading="lazy" />
+                  <div className="tt-gallery-caption">{caption}</div>
+                </div>
+              </RevealCard>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   )
